@@ -1,0 +1,27 @@
+.btnDel {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 6px;
+    height: 30px;
+}
+
+.containerWithData {
+    display: flex;
+    align-items: center;
+}
+
+.mainContainerContact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mainContainerContact>div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.iconContact {
+    margin-right: 4px;
+}

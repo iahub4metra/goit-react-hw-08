@@ -1,0 +1,36 @@
+.formWrap {
+    border: 1px solid black;
+    padding: 15px;
+    width: 300px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btnSubmit {
+    margin: 0 auto;
+    padding: 5px;
+    background-color: rgb(213, 213, 213);
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+}
+
+.inputElement {
+    width: 268px;
+    outline: transparent;
+    border: 1px solid gray;
+    font-size: 16px;
+    margin-top: 4px;
+    border-radius: 5px;
+    padding: 6px 0;
+    padding-left: 6px;
+}
+
+.errorMsg {
+    color: red;
+    font-size: 12px;
+    margin-top: 6px;
+}
