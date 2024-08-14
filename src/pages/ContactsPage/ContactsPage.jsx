@@ -9,7 +9,6 @@ const ContactsPage = () => {
     useEffect(() => {
         dispatch(fetchContacts())
     }, [dispatch])
-
     return (
         <div>
             <ContactForm />
