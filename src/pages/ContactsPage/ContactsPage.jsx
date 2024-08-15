@@ -4,17 +4,18 @@ import SearchBox from "../../components/SearchBox/SearchBox.jsx"
 import { useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { fetchContacts } from "../../redux/contacts/operations.js"
+import { Box } from "@mui/material"
 const ContactsPage = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchContacts())
     }, [dispatch])
     return (
-        <div>
+        <Box component="section" sx={{py:3,}}>
             <ContactForm />
             <SearchBox/>
             <ContactList/>
-        </div>
+        </Box>
         
     );
 }

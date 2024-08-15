@@ -46,6 +46,7 @@ const RegistrationForm = () => {
                             variant='outlined'
                             required
                             size="small"
+                            sx={{width:"260px"}}
                         />
                     </Box>
                     <Box sx={{mb:2,}}>
@@ -57,6 +58,7 @@ const RegistrationForm = () => {
                             variant='outlined'
                             required
                             size="small"
+                            sx={{width:"260px"}}
                         />
                     </Box>
                     <Box sx={{mb:2,}}>
@@ -69,6 +71,7 @@ const RegistrationForm = () => {
                             required
                             autoComplete="current-password"
                             size="small"
+                            sx={{width:"260px"}}
                         />
                     </Box>
                     <Button variant="outlined" type="submit">Register</Button>

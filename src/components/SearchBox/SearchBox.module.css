@@ -1,13 +1,5 @@
-.searchInput {
-    width: 300px;
-    outline: transparent;
-    border: 1px solid gray;
-    border-radius: 5px;
-    font-size: 16px;
-    padding: 6px 0;
-    padding-left: 6px;
-}
-
-.labelSearch {
-    margin: 16px 0 8px 0;
+.containerSearch {
+    margin-left: 88px;
+    margin-bottom: 24px;
+    margin-top: 16px;
 }

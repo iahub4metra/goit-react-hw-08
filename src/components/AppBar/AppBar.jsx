@@ -4,14 +4,18 @@ import s from "./AppBar.module.css"
 import { selectLoggedIn } from "../../redux/auth/selectors";
 import { useSelector } from "react-redux";
 import { UserMenu } from "../UserMenu/UserMenu";
+import { AppBar as TopBar } from "@mui/material";
+import {Toolbar} from "@mui/material";
 
 const AppBar = () => {
     const isLoggedIn = useSelector(selectLoggedIn)
     return ( 
-        <header className={s.header}>
-            <Navigation />
-            {isLoggedIn ? <UserMenu/>:<AuthNav/>}
-        </header>
+        <TopBar position="static">
+            <Toolbar sx={{justifyContent: "space-between"}}>
+                <Navigation />
+                {isLoggedIn ? <UserMenu/>:<AuthNav/>}
+            </Toolbar>
+        </TopBar>
     );
 }
 export default AppBar;

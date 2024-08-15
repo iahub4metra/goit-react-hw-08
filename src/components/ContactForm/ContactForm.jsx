@@ -1,9 +1,9 @@
 import { Formik, Form, Field, ErrorMessage } from "formik"
-import { useId } from "react"
 import * as Yup from "yup"
 import css from "./ContactForm.module.css"
 import { useDispatch } from "react-redux"
 import { addContact } from "../../redux/contacts/operations"
+import { TextField, Button, Box } from "@mui/material"
 
 const valuesSchema = Yup.object().shape({
     name: Yup.string().min(3, "Too short!").max(50, "Too long!").required("Required!"),
@@ -16,8 +16,6 @@ const initialValue = {
 }
 
 const ContactForm = () => {
-    const nameInputId = useId();
-    const numberInputId = useId();
     const dispatch = useDispatch()
 
     const handleSubmit = (values, actions) => {
@@ -29,17 +27,31 @@ const ContactForm = () => {
         <>
             <Formik initialValues={initialValue} onSubmit={handleSubmit} validationSchema={valuesSchema}>
                 <Form className={css.formWrap}>
-                    <div>
-                        <label htmlFor={nameInputId}>Name</label>
-                        <Field className={css.inputElement} type="text" name="name" id={nameInputId} />
+                    <Box sx={{mb:2,}}>
+                        <Field
+                            as={TextField}
+                            variant="outlined"
+                            type="text"
+                            name="name"
+                            label="Name"
+                            sx={{ width: '260px' }}
+                            size="small"
+                        />
                         <ErrorMessage className={css.errorMsg} name="name" component="span"/>
-                    </div>
-                    <div>
-                        <label htmlFor={numberInputId}>Number</label>
-                        <Field className={css.inputElement} type="text" name="number" id={numberInputId} />
+                    </Box>
+                    <Box sx={{mb:2,}}>
+                        <Field
+                            type="text"
+                            size="small"
+                            name="number"
+                            as={TextField}
+                            variant="outlined"
+                            label="Number"
+                            sx={{width:'260px'}}
+                        />
                         <ErrorMessage className={css.errorMsg} name="number" component="span"/>
-                    </div>
-                    <button className={css.btnSubmit} type="submit">Add contact</button>
+                    </Box>
+                    <Button sx={{display:"block", width:"150px", mx:"auto"}} variant="contained"  type="submit">Add contact</Button>
                 </Form>
             </Formik>
         </>

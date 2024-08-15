@@ -8,6 +8,7 @@
 .containerWithData {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .mainContainerContact {
@@ -22,6 +23,26 @@
     gap: 6px;
 }
 
+.contactName {
+    font-size: 22px;
+    width: 100px;
+    overflow: hidden;
+}
+
+.contactNumber {
+    font-size: 18px;
+    line-height: 20px;
+}
+
 .iconContact {
     margin-right: 4px;
+    width: 20px;
+    height: 20px;
 }
+
+/* .editContact {
+    position: absolute;
+    width: 130px;
+    left: 20px;
+    border: none;
+} */
