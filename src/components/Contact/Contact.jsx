@@ -1,12 +1,18 @@
-import { IoCall, IoPerson } from "react-icons/io5"
+import { IoCall, IoPerson, IoExpand } from "react-icons/io5"
 import css from "./Contact.module.css"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { deleteContact } from "../../redux/contacts/operations"
 import { Button} from "@mui/material"
+import { openDeleteModal, openModal } from "../../redux/contacts/slice"
+import { selectContactForModal } from "../../redux/contacts/selectors"
+import DeleteModal from "../DeleteModal/DeleteModal"
 const Contact = ({ contact}) => {
     const dispatch = useDispatch();
     const handleDelete = () => dispatch(deleteContact(contact.id))
+    const contactModal = useSelector(selectContactForModal)
+
     return (
+        <>
         <div className={css.mainContainerContact}>
             <div>
                 <div className={css.containerWithData}>
@@ -16,8 +22,13 @@ const Contact = ({ contact}) => {
                     <IoCall className={css.iconContact} /> <span className={css.contactNumber}>{contact.number}</span>
                 </div>
             </div>
-            <Button variant="contained" onClick={handleDelete} className={css.btnDel}>Delete</Button>
-        </div>
+            <div className={css.btnContainer}>
+                <Button variant="contained" onClick={()=> dispatch(openDeleteModal(contact.id))} className={css.btnDel}>Delete</Button>
+                <button className={css.btnIconExpand} onClick={() => dispatch(!contactModal && openModal(contact))}><IoExpand className={css.iconExpand} /></button>
+            </div>
+            </div>
+            <DeleteModal/>
+        </>
     )
 }
 export default Contact

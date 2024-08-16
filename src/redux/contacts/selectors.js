@@ -8,3 +8,7 @@ export const selectFilteredContacts = createSelector([ selectContacts, selectNam
     })
 export const selectLoading = (state) => state.contacts.loading;
 export const selectError = (state) => state.contacts.error;
+export const selectModalIsOpen = (state) => state.contacts.modalIsOpen
+export const selectContactForModal = (state) => state.contacts.contactForModal
+export const selectDeleteModal = (state) => state.contacts.deleteModalIsOpen
+export const selectContactId = (state)=> state.contacts.selectedContactId

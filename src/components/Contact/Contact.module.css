@@ -40,9 +40,21 @@
     height: 20px;
 }
 
-/* .editContact {
-    position: absolute;
-    width: 130px;
-    left: 20px;
+.iconExpand {
+    width: 20px;
+    height: 20px;
+}
+
+.btnIconExpand {
+    padding: 0;
     border: none;
-} */
+    background-color: inherit;
+    cursor: pointer;
+    width: 20px;
+}
+
+.btnContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
