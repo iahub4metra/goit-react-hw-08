@@ -34,8 +34,8 @@ const ContactInfoModal = () => {
 
     const handleBlurInput = () => {
         changedValue.name = inputEl.current.value
+        dispatch(editContact({ contactId: contact.id, values: changedValue }))
         inputEl.current.style.display = 'none'
-        dispatch(editContact({contactId: contact.id, values: changedValue}))
     }
 
     const handleBlurInputNumber = () => {
@@ -43,14 +43,6 @@ const ContactInfoModal = () => {
         dispatch(editContact({contactId: contact.id, values: changedValue}))
         inputNumberEl.current.style.display = 'none'
     }
-
-
-    // const handleChange = () => {
-    // }
-
-    // const handleChangeNumber = () => {
-    // }
-
 
     return (
         <div>
@@ -82,10 +74,9 @@ const ContactInfoModal = () => {
                             <IoPerson className={s.iconContact} /> 
                             <h3>{contact?.name}</h3>
                             <input
-                                // onChange={() => handleChange()}
                                 onBlur={() => handleBlurInput()}
                                 type="text"
-                                className={s.editContact}
+                                className={s.editContactName}
                                 ref={inputEl}
                                 defaultValue={contact?.name}
                             />
@@ -98,8 +89,7 @@ const ContactInfoModal = () => {
                             <p>{contact?.number}</p>
                             <input
                                 type="text"
-                                className={s.editContact}
-                                // onChange={() => handleChangeNumber()}
+                                className={s.editContact }
                                 onBlur={() => handleBlurInputNumber()}
                                 ref={inputNumberEl}
                                 defaultValue={contact?.number}

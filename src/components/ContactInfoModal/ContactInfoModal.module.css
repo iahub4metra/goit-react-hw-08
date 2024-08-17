@@ -4,6 +4,19 @@
     left: 40px;
     border: none;
     display: none;
+    outline: inherit;
+    font-size: inherit;
+}
+
+.editContactName {
+    position: absolute;
+    width: 130px;
+    left: 40px;
+    border: none;
+    display: none;
+    outline: inherit;
+    font-size: 1.17em;
+    font-weight: bold;
 }
 
 .mainContainerModal {
@@ -40,6 +53,12 @@
     display: flex;
     gap: 4px;
     align-items: center;
+}
+
+.contactInfoBox>p {
+    font-size: 18px;
+    line-height: 20px;
+
 }
 
 .iconEdit {
