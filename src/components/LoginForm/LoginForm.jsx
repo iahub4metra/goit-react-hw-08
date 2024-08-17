@@ -1,10 +1,12 @@
 import {Field, Form, Formik } from "formik";
-import { useId } from "react";
 import * as Yup from "yup"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/auth/operations";
 import { Box, TextField, Button } from "@mui/material";
 import s from "./LoginForm.module.css"
+import { NavLink } from "react-router-dom";
+import { selectError } from "../../redux/auth/selectors";
+import { clearError } from "../../redux/auth/slice";
 
 const valuesSchema = Yup.object().shape({
     email: Yup.string().required("Required!"),
@@ -17,12 +19,15 @@ const initialValue = {
 
 const LoginForm = () => {
     const dispatch = useDispatch()
-
+    const errorBoolean = useSelector(selectError)
     const handleSubmit = (values, actions) => {
+        dispatch(clearError())
         dispatch(login(values))
-        actions.resetForm()
+        if (errorBoolean) {
+            actions.resetForm()
+        }
+        
     }
-
     return (
         <Box component="section" sx={{
             display: "flex",
@@ -31,6 +36,7 @@ const LoginForm = () => {
             p:3,
         }}>
             <h2 className={s.titleLog}>Log In</h2>
+            <p>Don't have an account? <span><NavLink className={s.linkLogToReg} to="/register">Sign Up here</NavLink></span></p>
             <Formik initialValues={initialValue} validationSchema={valuesSchema} onSubmit={handleSubmit}>
                 <Form>
                     <Box sx={{mb:2,}}>
@@ -42,7 +48,9 @@ const LoginForm = () => {
                             variant='outlined'
                             required
                             size="small"
-                            sx={{width:"260px"}}
+                            sx={{ width: "260px" }}
+                            error={errorBoolean}
+                            helperText={errorBoolean && 'Incorrect entry'}
                         />
                     </Box>
                     <Box sx={{mb:2,}}>
@@ -55,7 +63,9 @@ const LoginForm = () => {
                             required
                             autoComplete="current-password"
                             size="small"
-                            sx={{width:"260px"}}
+                            sx={{ width: "260px" }}
+                            error={errorBoolean}
+                            helperText={errorBoolean && 'Incorrect entry'}
                         />
                     </Box>
                     <Button variant="outlined" type="submit">Log In</Button>

@@ -1,5 +1,14 @@
 .titleLog {
     font-size: 26px;
     font-weight: 500;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
+}
+
+.titleLog+p {
+    margin-bottom: 12px;
+}
+
+.linkLogToReg {
+    color: rgb(66, 66, 255);
+    text-decoration: none;
 }

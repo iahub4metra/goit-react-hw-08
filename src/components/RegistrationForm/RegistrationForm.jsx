@@ -1,9 +1,12 @@
 import { Field, Form, Formik } from "formik";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { register } from "../../redux/auth/operations";
 import * as Yup from "yup"
 import { Box, TextField, Button } from "@mui/material";
 import s from "./RegistrationForm.module.css"
+import { NavLink } from "react-router-dom";
+import { selectError } from "../../redux/auth/selectors";
+import { clearError } from "../../redux/auth/slice";
 
 
 const valuesSchema = Yup.object().shape({
@@ -19,10 +22,13 @@ const initialValue = {
 
 const RegistrationForm = () => {
     const dispatch = useDispatch()
-
+    const errorBoolean = useSelector(selectError)
     const handleSubmit = (values, actions) => {
+        dispatch(clearError())
         dispatch(register(values));
-        actions.resetForm()
+        if (errorBoolean) {
+            actions.resetForm()
+        }
     }
 
     return (
@@ -35,6 +41,7 @@ const RegistrationForm = () => {
             
         }}>
             <h2 className={s.titleRegis}>Sign Up</h2>
+            <p>Already have an account? <span><NavLink className={s.linkRegToLog} to="/login">Log in here</NavLink></span></p>
             <Formik initialValues={initialValue} onSubmit={handleSubmit} validationSchema={valuesSchema}>
                 <Form>
                     <Box sx={{mb:2,}}>
@@ -58,7 +65,9 @@ const RegistrationForm = () => {
                             variant='outlined'
                             required
                             size="small"
-                            sx={{width:"260px"}}
+                            sx={{ width: "260px" }}
+                            error={errorBoolean}
+                            helperText={errorBoolean && 'This email is used by another user!'}
                         />
                     </Box>
                     <Box sx={{mb:2,}}>

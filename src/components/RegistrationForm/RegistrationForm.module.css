@@ -1,5 +1,14 @@
 .titleRegis {
     font-size: 26px;
     font-weight: 500;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
+}
+
+.titleRegis+p {
+    margin-bottom: 12px;
+}
+
+.linkRegToLog {
+    color: rgb(66, 66, 255);
+    text-decoration: none;
 }
