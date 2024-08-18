@@ -6,8 +6,8 @@ import { Button } from "@mui/material";
 import ReactModal from "react-modal";
 import s from "./ContactInfoModal.module.css"
 import { IoCall, IoPerson, IoClose } from "react-icons/io5";
-import { useRef } from "react";
-import { deleteContact, editContact } from "../../redux/contacts/operations";
+import { useEffect, useRef } from "react";
+import {editContact } from "../../redux/contacts/operations";
 
 ReactModal.setAppElement('#root')
 
@@ -21,6 +21,14 @@ const ContactInfoModal = () => {
         name: contact?.name,
         number:contact?.number,
     };
+
+    useEffect(() => {
+        if (open) {
+        document.body.classList.add('modal-open');
+        } else {
+        document.body.classList.remove('modal-open');
+        }
+    }, [open]);
 
     const handleClick = () => {
         inputEl.current.style.display = "block";
@@ -47,11 +55,12 @@ const ContactInfoModal = () => {
     return (
         <div>
             <ReactModal
+                className={s.modalContent}
+                shouldCloseOnOverlayClick={false}
                 isOpen={open}
                 onRequestClose={() => dispatch(closeModal())}
                 style={{
                     content:{
-                        width: '400px',
                         height: '250px',
                         position: 'absolute',
                         top: '50%',

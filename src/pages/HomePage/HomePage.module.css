@@ -1,5 +1,5 @@
 .homeContainer {
-    padding: 70px;
+    padding: 15px;
     height: 80vh;
     display: flex;
     flex-direction: column;
@@ -43,9 +43,10 @@
 
 .aboutList {
     display: flex;
-    gap: 24px;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 24px;
 }
 
 .aboutList>li {
@@ -81,4 +82,18 @@
     margin-bottom: 8px;
 }
 
-/* .aboutTitle+p {} */
+@media screen and (min-width:768px) {
+    .homeContainer {
+        padding: 30px;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .homeContainer {
+        padding: 70px;
+    }
+
+    .aboutList {
+        flex-direction: row;
+    }
+}

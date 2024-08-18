@@ -1,4 +1,23 @@
 .linkNav {
     text-decoration: none;
     color: #f0f0f0;
+    font-size: 12px;
+}
+
+.activeNavLink {
+    color: black;
+}
+
+.navLinkLoggedIn {
+    display: none;
+}
+
+@media screen and (min-width:768px) {
+    .linkNav {
+        font-size: 14px;
+    }
+
+    .navLinkLoggedIn {
+        display: block;
+    }
 }

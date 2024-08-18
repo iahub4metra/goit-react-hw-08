@@ -3,3 +3,35 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.mobileTopBarUser {
+    font-weight: 700;
+    font-size: 20px;
+    color: rgb(221, 231, 240);
+}
+
+.btnIconMenu {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.iconMenu {
+    width: 28px;
+    height: 28px;
+}
+
+@media screen and (min-width:768px) {
+    .mobileTopBarUser {
+        display: none;
+    }
+
+    .btnIconMenu {
+        display: none;
+    }
+
+    .iconMenu {
+        display: none;
+    }
+}

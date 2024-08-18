@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import { deleteContact } from "../../redux/contacts/operations";
 import toast, { Toaster } from "react-hot-toast"
 import s from "./DeleteModal.module.css"
+import { useEffect } from "react";
 
 const params = {
     position:'top-right',
@@ -22,7 +23,13 @@ const DeleteModal = () => {
         dispatch(closeDeleteModal())
         dispatch(closeModal())
     }
-
+    useEffect(() => {
+    if (open) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+  }, [open]);
     return (
         <>
             <ReactModal

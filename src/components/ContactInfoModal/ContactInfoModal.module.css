@@ -79,3 +79,15 @@
     justify-content: space-between;
     margin-bottom: 16px;
 }
+
+
+.modalContent {
+    width: 240px;
+    background-color: #fff;
+}
+
+@media screen and (min-width:768px) {
+    .modalContent {
+        width: 400px;
+    }
+}

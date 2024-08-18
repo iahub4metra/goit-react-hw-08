@@ -5,13 +5,14 @@ import { useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { fetchContacts } from "../../redux/contacts/operations.js"
 import { Box } from "@mui/material"
+import s from "./ContactsPage.module.css"
 const ContactsPage = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchContacts())
     }, [dispatch])
     return (
-        <Box component="section" sx={{py:3,}}>
+        <Box component="section" sx={{py:3}} className={s.contactsSection}>
             <ContactForm />
             <SearchBox/>
             <ContactList/>

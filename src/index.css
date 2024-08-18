@@ -40,3 +40,7 @@ body {
 main {
     flex: 1;
 }
+
+body.modal-open {
+    overflow: hidden;
+}
