@@ -1,0 +1,10 @@
+.btnsContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.modalDelCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

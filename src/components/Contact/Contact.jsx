@@ -1,14 +1,12 @@
 import { IoCall, IoPerson, IoExpand } from "react-icons/io5"
 import css from "./Contact.module.css"
 import { useDispatch, useSelector } from "react-redux"
-import { deleteContact } from "../../redux/contacts/operations"
 import { Button} from "@mui/material"
 import { openDeleteModal, openModal } from "../../redux/contacts/slice"
 import { selectContactForModal } from "../../redux/contacts/selectors"
 import DeleteModal from "../DeleteModal/DeleteModal"
 const Contact = ({ contact}) => {
     const dispatch = useDispatch();
-    const handleDelete = () => dispatch(deleteContact(contact.id))
     const contactModal = useSelector(selectContactForModal)
 
     return (

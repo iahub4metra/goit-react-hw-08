@@ -4,6 +4,7 @@ import css from "./ContactForm.module.css"
 import { useDispatch } from "react-redux"
 import { addContact } from "../../redux/contacts/operations"
 import { TextField, Button, Box } from "@mui/material"
+import toast, {Toaster} from 'react-hot-toast'
 
 const valuesSchema = Yup.object().shape({
     name: Yup.string().min(3, "Too short!").max(50, "Too long!").required("Required!"),
@@ -15,10 +16,15 @@ const initialValue = {
     number:"",
 }
 
+const params = {
+    position:'top-right'
+}
+
+
 const ContactForm = () => {
     const dispatch = useDispatch()
-
     const handleSubmit = (values, actions) => {
+        toast.success('Contact successfully added', params)
         dispatch(addContact(values))
         actions.resetForm()
     }
@@ -54,6 +60,7 @@ const ContactForm = () => {
                     <Button sx={{display:"block", width:"150px", mx:"auto"}} variant="contained"  type="submit">Add contact</Button>
                 </Form>
             </Formik>
+            <Toaster/>
         </>
     )
 }
