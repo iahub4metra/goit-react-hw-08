@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { fetchContacts, addContact, deleteContact, editContact } from "./operations"
+import {logout} from "../auth/operations"
 const initialContacts = {
     items: [],
     loading: false,
@@ -72,6 +73,11 @@ const contactsSlice = createSlice({
                 state.contactForModal = updatedContact
                 state.items[index] = updatedContact
                 
+            })
+            .addCase(logout.fulfilled, (state) => {
+                state.items = []
+                state.error = null
+                state.loading = false
             })
     }
 })
